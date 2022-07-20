@@ -1,0 +1,60 @@
+﻿@model Business.Data.Repository.Models.Mineral
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Mineral</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Hardness)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Hardness)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Luster)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Luster)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Streak)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Streak)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.SpecificGravity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.SpecificGravity)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Diaphaneity)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Diaphaneity)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

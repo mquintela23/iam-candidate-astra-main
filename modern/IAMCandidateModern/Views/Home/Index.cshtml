@@ -1,8 +1,42 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
     ViewData["Title"] = "Home Page";
+    List<DropDownListItem>  categoryList = ViewBag.CategoryList;
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="text-center">  
+    <h1 class="display-4">Employee Dropdown</h1>  
+  
+    <form asp-action="EmployeeDropdown" asp-controller="home" method="post">  
+  
+        <div class="row">  
+            <div class="col-md-4">  
+                <select id="typeCategory" class="form-control"  asp-items="@(new SelectList(categoryList, "Value", "Text"))">  
+                    <option value="">--Select Object Type--</option>  
+                </select>
+            </div> 
+        </div>
+        
+        <div class="row">  
+            <div class="col-md-4">  
+                <select id="typeList" class="form-control" asp-items="@(new SelectList(string.Empty, "Value", "Text"))">
+                </select>
+            </div> 
+        </div>  
+  
+    </form>  
+</div> 
+<script src="~/js/controller_lib.js"></script>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+        var items = "<option value=''>--Select Object Type--</option>";
+        var url = '@Url.Content("~/")';
+        $("#typeList").html(items);
+        $("#typeCategory").change(function() {
+            var ddTypeCategory = "#typeCategory";
+            typeCategoryOnChange($("#typeList"),url, $(ddTypeCategory).val());
+        });
+    });
+</script>

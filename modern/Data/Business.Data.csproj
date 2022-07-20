@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,27 +17,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.7" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Business.Core\Business.Core.csproj" />
-    <ProjectReference Include="..\Data\Business.Data.csproj" />
+    <Folder Include="Context\" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Interfaces\Business.Interfaces.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Interfaces\Models\" />
-    <Folder Include="Models\BOobjects\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="aspnet-IAMCandidateTest.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="aspnet-IAMCandidateTest_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
 
 </Project>

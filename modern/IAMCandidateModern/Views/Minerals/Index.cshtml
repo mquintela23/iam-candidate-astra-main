@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Business.Data.Repository.Models.Mineral>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Hardness)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Luster)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Color)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Streak)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecificGravity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diaphaneity)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hardness)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Luster)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Streak)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpecificGravity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diaphaneity)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
