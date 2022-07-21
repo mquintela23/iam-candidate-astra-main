@@ -16,3 +16,18 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.hidden {
+    display: none;
+}
+
+.grid-header {
+    border: 1px solid #eee;
+    padding: 10px;
+    background-color: #33b5e5;
+    color: #fff;
+}
+
+label {
+    text-align: left;
+}

@@ -29,7 +29,7 @@ namespace Business.Core.Repository
 
         public T GetById(Guid id)
         {
-            throw new NotImplementedException();
+            return Context.Set<T>().Find(id);
         }
 
         public IEnumerable<T> GetAll()

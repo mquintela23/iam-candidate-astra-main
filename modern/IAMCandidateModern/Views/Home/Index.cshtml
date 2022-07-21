@@ -5,38 +5,64 @@
     List<DropDownListItem>  categoryList = ViewBag.CategoryList;
 }
 
-<div class="text-center">  
-    <h1 class="display-4">Employee Dropdown</h1>  
-  
-    <form asp-action="EmployeeDropdown" asp-controller="home" method="post">  
-  
-        <div class="row">  
-            <div class="col-md-4">  
-                <select id="typeCategory" class="form-control"  asp-items="@(new SelectList(categoryList, "Value", "Text"))">  
-                    <option value="">--Select Object Type--</option>  
-                </select>
-            </div> 
-        </div>
-        
-        <div class="row">  
-            <div class="col-md-4">  
-                <select id="typeList" class="form-control" asp-items="@(new SelectList(string.Empty, "Value", "Text"))">
-                </select>
-            </div> 
-        </div>  
-  
-    </form>  
-</div> 
 <script src="~/js/controller_lib.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<div class="text-center">  
+    <h1 class="display-4">IAM Candidate Modern Test</h1>
+    <div class="mb-3 row">
+            <label for="typeCategory" class="col-sm-2 col-form-label">Select Category</label>
+            <div class="col-sm-10">
+                <select id="category" class="form-select"  asp-items="@(new SelectList(categoryList, "Value", "Text"))">  
+                    <option value="">--Select Object Type--</option>  
+                </select>
+            </div>
+        </div>
+    <div class="mb-3 row row-type hidden">
+        <label for="typeList" class="col-sm-2 col-form-label">Select Category Type</label>
+        <div class="col-sm-10">
+            <select id="typeCategory" class="form-select" asp-items="@(new SelectList(string.Empty, "Value", "Text"))">
+            </select>
+        </div>
+    </div>
+    <div class="mb-3 row row-type hidden">
+        <div class="container type-description">
+        </div>
+    </div>
+</div> 
+
 <script>
     $(document).ready(function() {
-        var items = "<option value=''>--Select Object Type--</option>";
         var url = '@Url.Content("~/")';
-        $("#typeList").html(items);
+        $("#category").change(function() {
+            if ($(this).val() === "") {
+                $('#typeCategory option[value=""]').attr('selected', 'selected');
+                $(".row-type").addClass("hidden");
+                $('.type-description').html("");
+            } else {
+                $(".row-type").removeClass("hidden");
+                $('.type-description').html("");
+                categoryOnChange($("#typeCategory"),url, $("#category").val());
+            }
+        });
+
         $("#typeCategory").change(function() {
-            var ddTypeCategory = "#typeCategory";
-            typeCategoryOnChange($("#typeList"),url, $(ddTypeCategory).val());
+            typeCategoryOnChange(url, $("#category").val(),$(this).val(), function (data) {
+                    $('.type-description').html("");
+                    data.forEach(item => {
+                        $('.type-description').append(                            
+                            '<div class="row">'
+                                +'<div class="col-3 grid-header">'
+                                    + item.header
+                                +'</div>'
+                                +'<div class="col-2">'
+                                    + item.description
+                                +'</div>'
+                            +'</div>');
+                    });
+                });
         });
     });
+
+    //# sourceURL=index.js
 </script>
